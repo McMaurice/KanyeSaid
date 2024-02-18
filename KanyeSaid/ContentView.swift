@@ -20,7 +20,6 @@ struct ContentView: View {
                 .font(.system(size: 26))
                 .italic()
                 .padding()
-                .background(Color.green)
                 .cornerRadius(10)
                 .shadow(radius: 15)
                 .padding()
