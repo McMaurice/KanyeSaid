@@ -42,8 +42,6 @@ struct ContentView: View {
             .padding()
 
         }
-        .environmentObject(viewModel)
-        
     }
 }
 
