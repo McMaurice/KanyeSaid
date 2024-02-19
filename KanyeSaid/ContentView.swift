@@ -15,15 +15,18 @@ struct ContentView: View {
             Text("Kanye once said ")
                 .font(.title)
                 .padding()
-            Text(viewModel.quoteModel.quote)
-                .multilineTextAlignment(.center)
-                .font(.system(size: 26))
-                .italic()
-                .padding()
-                .cornerRadius(10)
-                .shadow(radius: 15)
-                .padding()
-            
+            if let quoteResult = viewModel.quoteModel.quote {
+                Text(quoteResult)
+                    .multilineTextAlignment(.center)
+                    .font(.system(size: 26))
+                    .italic()
+                    .padding()
+                    .cornerRadius(10)
+                    .shadow(radius: 15)
+                    .padding()
+            } else {
+                ProgressView("Loading quote..")
+            }
             Button {
                 viewModel.getRequest()
             } label: {
