@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor class ViewModel: ObservableObject {
     @Published var quoteModel = QuoteModel(quote: "")
-    @Published var resultQuotes = ""
+    @Published var newQuote: Bool = false
     
     // FUNCTION FOR GET REQUEST API CALL
     func getRequest() {
@@ -23,10 +23,6 @@ import Foundation
             
             guard let data = data else {
                 print("Could not retrieve data...")
-                
-                DispatchQueue.main.async {
-                    self.resultQuotes = "Could not retrieve data..."
-                }
                 return
             }
             
@@ -35,6 +31,7 @@ import Foundation
                 
                 DispatchQueue.main.async {
                     self.quoteModel = quote
+                    self.newQuote = true
                 }
             } catch {
                 print("Error decoding data: \(error)")
